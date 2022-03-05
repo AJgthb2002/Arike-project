@@ -1,1 +1,1 @@
-web: gunicorn arike_project.wsgi --log-file -
+web: gunicorn arikeproject.wsgi --log-file -
