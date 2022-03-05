@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% block content %}
+<div class="flex">
+  <div class="flex flex-col basis-1/2 bg-blue-600 h-screen justify-center">
+    <div class="flex justify-center">
+      <div class="flex flex-col">
+        <h1 class="text-7xl text-white font-bold mb-2">Arike</h1>
+        <p class="text-white">The modern way of efficient palliative care</p>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-col basis-1/2 bg-white h-screen justify-center">
+    <div class="flex justify-center">
+      <div class="flex flex-col">
+        <h1 class="text-3xl text-gray-600 font-semibold mb-3">
+          Authorized Login
+        </h1>
+        <form method="post">
+          {% csrf_token %} {% for field in form %}
+          <div class="my-2">
+            <input
+              type="{{field.field.widget.input_type}}"
+              class="mb-1 rounded-lg w-full h-8 bg-gray-100 px-4 py-5"
+              name="{{field.html_name}}"
+              id="{{field.auto_id}}"
+              placeholder="{{field.label}}"
+              required="{{field.required}}"
+            />
+          </div>
+          {% endfor %}
+          <button
+            class="bg-blue-500 hover:bg-blue-400 text-white mt-4 my-2 py-2 px-10 w-full border border-blue-700 rounded-lg shadow"
+            type="submit"
+          >
+            Login
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+​ {% endblock %}

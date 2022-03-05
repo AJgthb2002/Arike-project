@@ -1,0 +1,179 @@
+{% extends "base.html" %} {% block content %}
+<div class="flex mb-0">
+  {% include 'dashboard_layout.html' with username=myuser.username %}
+  <div class="flex basis-3/4 bg-gray-200 h-screen mb-0 overflow-auto">
+    <div class="flex flex-col w-full">
+      <div class="flex flex-col basis-1/5 w-full justify-center">
+        <div class="flex mx-10 mt-8 justify-between">
+          <h1 class="text-3xl font-bold">Facilities</h1>
+          <button
+            class="bg-blue-600 text-white px-3 py-1 rounded-lg font-semibold"
+          >
+            <a href="/create-facility/">New</a>
+          </button>
+        </div>
+        <div class="flex mx-10 mt-6 mb-4 justify-between">
+          <form class="" method="get">
+            <div class="flex justify-start">
+              <input
+                type="text"
+                name="search"
+                placeholder="search"
+                class="bg-white rounded-lg px-2 py-2"
+              />
+              <button class="bg-white rounded ml-2 px-1 py-1">
+                <div class="flex flex-col justify-center">
+                  <img
+                    class="h-6 w-6 rounded-full align-middle"
+                    src="https://cdn-icons-png.flaticon.com/512/149/149852.png"
+                    alt="searchicon"
+                  />
+                </div>
+              </button>
+            </div>
+          </form>
+          <div class="flex justify-center">
+            <div
+              class="flex justify-between rounded-lg text-gray-400 bg-white text-sm py-2 px-4 mx-2 h-10"
+            >
+              Filters
+              <img
+                src="https://cdn-icons.flaticon.com/png/512/2985/premium/2985150.png?token=exp=1645957558~hmac=27bb911f80a375b4dc065f106dcdf1bc"
+                class="h-5 w-5 color-grey"
+              />
+            </div>
+            <div
+              class="flex justify-between rounded-lg text-gray-400 bg-white text-sm py-2 px-4 mx-2 h-10"
+            >
+              Sort
+              <img
+                src="https://cdn-icons.flaticon.com/png/512/2985/premium/2985150.png?token=exp=1645957558~hmac=27bb911f80a375b4dc065f106dcdf1bc"
+                class="h-5 w-5 color-grey"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col basis-4/5 pb-8">
+        <div class="flex flex-col bg-white py-6 px-5 mx-10 rounded-lg w-2/3">
+          <form method="get">
+            <h1 class="text-lg font-semibold mb-4">Filters</h1>
+            <div class="flex">
+              <div class="mr-4">
+                <select
+                  name="filter-ward"
+                  id="filter-ward"
+                  class="border-black border-2 rounded-lg px-4 py-3 h-12 w-28"
+                >
+                  <option value="default">Ward</option>
+                  {% for ward in wards_data %}
+                  <option value="{{ward.name}}">{{ward.name}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="mr-6">
+                <select
+                  name="filter-kind"
+                  id="filter-kind"
+                  class="border-black border-2 rounded-lg px-4 py-3 h-12 w-28"
+                >
+                  <option value="default">Kind</option>
+                  <option value="1">PHC</option>
+                  <option value="2">CHC</option>
+                </select>
+              </div>
+            </div>
+            <button
+              class="bg-blue-600 hover:bg-blue-400 text-white font-semibold w-28 px-2 py-2 rounded-lg mt-6"
+            >
+              Apply
+            </button>
+          </form>
+        </div>
+        <div class="grid grid-cols-2 gap-4 mt-8 mx-10">
+          {% for fac in facility_data %}
+          <div class="bg-white w-full px-5 py-3 rounded-lg">
+            <div class="flex flex-col">
+              <div class="flex justify-between">
+                <h3 class="mx-0 text-black font-semibold">{{fac.name}}</h3>
+                <div
+                  class="flex rounded-lg bg-blue-900 font-semibold text-xs text-white px-4 py-1"
+                >
+                  {% if fac.kind is 1 %} PHC {% else %} CHC {% endif %}
+                </div>
+              </div>
+              <p class="text-sm text-gray-700 mt-2">{{fac.address}}</p>
+              <h4 class="text-sm my-2 text-gray-900">{{fac.pincode}}</h4>
+              <hr class="mb-4" />
+              <div class="flex justify-between">
+                <h4 class="text-md">{{fac.phone}}</h4>
+                <button
+                  class="border-2 border-black w-16 px-2 py-1 rounded-lg hover:bg-black hover:text-white"
+                >
+                  <a href="/facility-details/{{fac.id}}/">View</a>
+                </button>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+          <div class="bg-white w-full px-5 py-3 rounded-lg">
+            <div class="flex flex-col">
+              <div class="flex justify-between">
+                <h3 class="mx-0 text-black font-semibold">Govt Hospital</h3>
+                <div
+                  class="flex rounded-lg bg-blue-900 font-semibold text-xs text-white px-4 py-1"
+                >
+                  PHC
+                </div>
+              </div>
+              <p class="text-sm text-gray-700 mt-2">
+                Aikaranad Grama Panchayat, Ernakulam District
+              </p>
+              <h4 class="text-sm my-2 text-gray-900 font-semibold">
+                PAZAMTHOTTAM
+              </h4>
+              <hr class="mb-4" />
+              <div class="flex justify-between">
+                <h4 class="text-md">+91 8935477234</h4>
+                <button
+                  class="border-2 border-black w-16 px-2 py-1 rounded-lg hover:bg-black hover:text-white"
+                >
+                  View
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white w-full px-5 py-3 rounded-lg">
+            <div class="flex flex-col">
+              <div class="flex justify-between">
+                <h3 class="mx-0 text-black font-semibold">Govt Hospital</h3>
+                <div
+                  class="flex rounded-lg bg-blue-900 font-semibold text-xs text-white px-4 py-1"
+                >
+                  PHC
+                </div>
+              </div>
+              <p class="text-sm text-gray-700 mt-2">
+                Aikaranad Grama Panchayat, Ernakulam District
+              </p>
+              <h4 class="text-sm my-2 text-gray-900 font-semibold">
+                PAZAMTHOTTAM
+              </h4>
+              <hr class="mb-4" />
+              <div class="flex justify-between">
+                <h4 class="text-md">+91 8935477234</h4>
+                <button
+                  class="border-2 border-black w-16 px-2 py-1 rounded-lg hover:bg-black hover:text-white"
+                >
+                  View
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+​ {% endblock %}

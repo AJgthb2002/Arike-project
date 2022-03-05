@@ -1,0 +1,48 @@
+{% extends "base.html" %} {% block content %}
+<div class="flex mb-0">
+  {% include 'dashboard_layout.html' with username=myusername %}
+  <div class="flex basis-3/4 bg-gray-200 h-screen mb-0 overflow-auto">
+    <div class="flex flex-col w-full">
+      <div class="flex justify-center">
+        <div class="flex flex-col py-10">
+          <h1 class="text-3xl font-bold">New User</h1>
+
+          <div class="font-bold text-2xl mb-5 mt-12">Profile</div>
+          <div class="flex justify-around">
+            <div class="bg-white flex flex-col rounded-lg px-5 py-2 mx-8 w-60">
+              <span class="text-gray-600 text-sm">First Name</span>
+              <input placeholder="" value="Alex" type="text" />
+            </div>
+
+            <div class="bg-white flex flex-col rounded-lg px-5 py-2 mx-8 w-60">
+              <span class="text-gray-600 text-sm">Last Name</span>
+              <input placeholder="" value="Doe" type="text" />
+            </div>
+          </div>
+
+          <div class="flex justify-around mt-4">
+            <div class="bg-white flex flex-col rounded-lg px-5 py-2 mx-8 w-60">
+              <span class="text-gray-600 text-sm">Email</span>
+              <input placeholder="" value="alex@gmail.com" type="email" />
+            </div>
+
+            <div class="bg-white flex flex-col rounded-lg px-5 py-2 mx-8 w-60">
+              <span class="text-gray-600 text-sm">Birthdate</span>
+              <input placeholder="" value="21/6/1995" type="date" />
+            </div>
+          </div>
+          <div class="font-semibold text-black text-lg mt-8">
+            User will receive an email to continue registration
+          </div>
+
+          <button
+            class="bg-blue-600 text-white font-semibold w-60 px-5 py-2 rounded-lg mt-8"
+          >
+            <a href="">Next</a>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+​ {% endblock %}

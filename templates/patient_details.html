@@ -1,0 +1,95 @@
+{% extends "base.html" %} {% block content %}
+<div class="flex mb-0">
+  {% include 'dashboard_layout.html' with username=myuser.username %}
+  <div class="flex basis-3/4 bg-gray-200 h-screen mb-0 overflow-auto">
+    <div class="flex flex-col w-full">
+      <div class="flex flex-col basis-1/5 w-full justify-center">
+        <div class="flex mx-10 mt-8 justify-start">
+          <h1 class="text-3xl font-bold">
+            {{patientobj.first_name}} {{patientobj.last_name}}
+          </h1>
+        </div>
+        <div class="flex mx-10 mt-12 mb-6 justify-between">
+          <h1 class="text-lg font-bold">Personal Information</h1>
+          <div class="flex">
+            <button
+              class="bg-blue-600 text-white px-4 py-1 rounded-lg font-semibold"
+            >
+              <a href="/update-patient/{{patientobj.id}}/">Edit</a>
+            </button>
+            <button
+              class="bg-blue-600 text-white px-4 py-1 mx-4 rounded-lg font-semibold"
+            >
+              <a href="/delete-patient/{{patientobj.id}}/">Delete</a>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col basis-4/5">
+        <div
+          class="grid grid-cols-3 grid-rows-3 grid-flow-row-dense gap-6 mt-2 mx-10"
+        >
+          <div
+            class="flex flex-col col-span-2 row-span-2 bg-white rounded-lg px-8 py-4 pr-12"
+          >
+            <div class="flex flex-col">
+              <h3 class="mx-0 text-black font-semibold text-lg">
+                {{patientobj.first_name}} {{patientobj.last_name}}
+              </h3>
+              <p class="text-sm text-gray-700">{{patientobj.address}}</p>
+            </div>
+            <div class="flex mt-4 justify-between">
+              <div class="flex flex-col">
+                <h2 class="font-semibold text-sm">Phone Number</h2>
+                <h4 class="text-sm text-blue-500">{{patientobj.phone}}</h4>
+
+                <h2 class="mt-4 font-semibold text-sm">Gender</h2>
+                {% if patientobj.gender is 1 %}
+                <h4 class="text-sm">Male</h4>
+                {% elif patientobj.gender is 2 %}
+                <h4 class="text-sm">Female</h4>
+                {% else %}
+                <h4 class="text-sm">Non Binary</h4>
+                {% endif %}
+
+                <h2 class="mt-4 font-semibold text-sm">Last Visit</h2>
+                <h4 class="text-sm">1 March 2021</h4>
+              </div>
+              <div class="flex flex-col">
+                <h2 class="font-semibold text-sm">Emergency Phone Number</h2>
+                <h4 class="text-sm text-blue-500">
+                  {{patientobj.emergency_phone_number}}
+                </h4>
+
+                <h2 class="mt-4 font-semibold text-sm">Faciltiy</h2>
+                <h4 class="text-sm">{{patientobj.facility}}</h4>
+
+                <h2 class="mt-4 font-semibold text-sm">Next Visit</h2>
+                <h4 class="text-sm">10 March 2021</h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-center items-center bg-white rounded-lg">
+            <a href=""><h1 class="font-bold text-lg">Visits</h1> </a>
+          </div>
+
+          <div class="flex justify-center items-center bg-white rounded-lg">
+            <a href=""><h1 class="font-bold text-lg">Treatments</h1> </a>
+          </div>
+
+          <div class="flex justify-center items-center bg-white rounded-lg">
+            <a href="family/"
+              ><h1 class="font-bold text-lg">Family Details</h1>
+            </a>
+          </div>
+
+          <div class="flex justify-center items-center bg-white rounded-lg">
+            <a href=""><h1 class="font-bold text-lg">Disease History</h1> </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+​ {% endblock %}

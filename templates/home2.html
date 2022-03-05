@@ -1,0 +1,178 @@
+{% extends "base.html" %} {% block content %}
+<div class="flex mb-0">
+  {% include 'dashboard_layout.html' with username=myuser.username %}
+  <div class="flex basis-3/4 bg-gray-200 h-screen mb-0 overflow-auto">
+    <div class="flex flex-col w-full">
+      <div class="flex flex-col basis-1/5 w-full justify-center">
+        <form class="" method="get">
+          <div class="flex justify-start my-10 mx-10">
+            <input
+              type="text"
+              name="search"
+              placeholder="search"
+              class="bg-white rounded-lg px-2 py-2"
+            />
+            <button class="bg-white rounded ml-2 px-1 py-1">
+              <div class="flex flex-col justify-center">
+                <img
+                  class="h-6 w-6 rounded-full align-middle"
+                  src="https://cdn-icons-png.flaticon.com/512/149/149852.png"
+                  alt="searchicon"
+                />
+              </div>
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="flex flex-col basis-4/5">
+        <div class="grid grid-cols-2 gap-4 mt-5 mx-10">
+          <div class="bg-white w-full px-5 py-3 rounded-lg">
+            <div class="flex flex-row px-5 justify-start">
+              <div class="flex flex-col justify-center mr-5">
+                <img
+                  class="inline-block h-9 w-9 rounded-full"
+                  src="https://cdn-icons-png.flaticon.com/512/2088/2088617.png"
+                  alt=""
+                />
+              </div>
+              <div class="flex flex-col">
+                <h3 class="mx-0 text-black font-semibold">Schedule</h3>
+                <p class="text-sm text-gray-700">
+                  Lorem ipsum dolor sit amet <br />
+                  futnnma,ksifjdsig
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white w-full px-5 py-3 rounded-lg">
+            <div class="flex flex-row px-5 justify-start">
+              <div class="flex flex-col justify-center mr-5">
+                <img
+                  class="inline-block h-10 w-10 rounded-full"
+                  src="https://cdn-icons.flaticon.com/png/512/1582/premium/1582292.png?token=exp=1645955720~hmac=dcdfff2edddaaed718f5f45cd0f643d6"
+                  alt=""
+                />
+              </div>
+              <div class="flex flex-col">
+                <h3 class="mx-0 text-black font-semibold">Manage LSG</h3>
+                <p class="text-sm text-gray-700">
+                  Lorem ipsum dolor sit amet <br />
+                  futnnma,ksifjdsig
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white w-full px-5 py-3 rounded-lg">
+            <div class="flex flex-row px-5 justify-start">
+              <div class="flex flex-col justify-center mr-5">
+                <img
+                  class="inline-block h-9 w-9 rounded-full"
+                  src="https://cdn-icons-png.flaticon.com/512/481/481078.png"
+                  alt=""
+                />
+              </div>
+              <div class="flex flex-col">
+                <h3 class="mx-0 text-black font-semibold">Item 3</h3>
+                <p class="text-sm text-gray-700">
+                  Lorem ipsum dolor sit amet <br />
+                  futnnma,ksifjdsig
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white w-full px-5 py-3 rounded-lg">
+            <div class="flex flex-row px-5 justify-start">
+              <div class="flex flex-col justify-center mr-5">
+                <img
+                  class="inline-block h-9 w-9 rounded-full"
+                  src="https://cdn-icons-png.flaticon.com/512/481/481078.png"
+                  alt=""
+                />
+              </div>
+              <div class="flex flex-col">
+                <h3 class="mx-0 text-black font-semibold">Item 4</h3>
+                <p class="text-sm text-gray-700">
+                  Lorem ipsum dolor sit amet <br />
+                  futnnma,ksifjdsig
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white w-full px-5 py-3 rounded-lg">
+            <div class="flex flex-row px-5 justify-start">
+              <div class="flex flex-col justify-center mr-5">
+                <img
+                  class="inline-block h-9 w-9 rounded-full"
+                  src="https://cdn-icons-png.flaticon.com/512/481/481078.png"
+                  alt=""
+                />
+              </div>
+              <div class="flex flex-col">
+                <h3 class="mx-0 text-black font-semibold">Item 5</h3>
+                <p class="text-sm text-gray-700">
+                  Lorem ipsum dolor sit amet <br />
+                  futnnma,ksifjdsig
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white w-full px-5 py-3 rounded-lg">
+            <div class="flex flex-row px-5 justify-start">
+              <div class="flex flex-col justify-center mr-5">
+                <img
+                  class="inline-block h-9 w-9 rounded-full"
+                  src="https://cdn-icons-png.flaticon.com/512/481/481078.png"
+                  alt=""
+                />
+              </div>
+              <div class="flex flex-col">
+                <h3 class="mx-0 text-black font-semibold">Item 6</h3>
+                <p class="text-sm text-gray-700">
+                  Lorem ipsum dolor sit amet <br />
+                  futnnma,ksifjdsig
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white w-full px-5 py-3 rounded-lg">
+            <div class="flex flex-row px-5 justify-start">
+              <div class="flex flex-col justify-center mr-5">
+                <img
+                  class="inline-block h-9 w-9 rounded-full"
+                  src="https://cdn-icons-png.flaticon.com/512/481/481078.png"
+                  alt=""
+                />
+              </div>
+              <div class="flex flex-col">
+                <h3 class="mx-0 text-black font-semibold">Item 7</h3>
+                <p class="text-sm text-gray-700">
+                  Lorem ipsum dolor sit amet <br />
+                  futnnma,ksifjdsig
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white w-full px-5 py-3 rounded-lg">
+            <div class="flex flex-row px-5 justify-start">
+              <div class="flex flex-col justify-center mr-5">
+                <img
+                  class="inline-block h-9 w-9 rounded-full"
+                  src="https://cdn-icons-png.flaticon.com/512/481/481078.png"
+                  alt=""
+                />
+              </div>
+              <div class="flex flex-col">
+                <h3 class="mx-0 text-black font-semibold">Item 8</h3>
+                <p class="text-sm text-gray-700">
+                  Lorem ipsum dolor sit amet <br />
+                  futnnma,ksifjdsig
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+​ {% endblock %}

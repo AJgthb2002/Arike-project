@@ -1,0 +1,71 @@
+{% extends "base.html" %} {% block content %}
+<div class="flex mb-0">
+  {% include 'dashboard_layout.html' with username=myuser.username %}
+  <div
+    class="flex basis-3/4 bg-gray-200 h-screen mb-0 overflow-auto justify-center"
+  >
+    <div class="flex justify-center">
+      <div class="flex flex-col px-8 py-8">
+        <div class="flex justify-between">
+          <h1 class="text-3xl mb-8 font-bold mr-8">
+            {{userobj.first_name}} {{userobj.last_name}}
+          </h1>
+          <div class="flex">
+            <button
+              class="border-2 border-black px-4 h-10 mr-4 w-20 rounded-lg hover:bg-black hover:text-white"
+            >
+              <a href="/delete-user/1/">Delete</a>
+            </button>
+            <button
+              class="border-2 border-black bg-black px-4 h-10 w-20 rounded-lg hover:bg-white hover:text-black text-white"
+            >
+              <a href="/update-user/1/">Edit</a>
+            </button>
+          </div>
+        </div>
+
+        <h1 class="mt-6 mb-2 text-lg font-bold">Profile</h1>
+
+        <div class="grid grid-cols-2 grid-flow-row-dense gap-4 mt-2">
+          <div class="flex flex-col px-2 py-2 bg-white my-2 rounded-lg">
+            <div class="text-sm text-gray-800 px-2 font-semibold">
+              First Name
+            </div>
+            <div class="px-2 py-1">{{userobj.first_name}}</div>
+          </div>
+
+          <div class="flex flex-col px-2 py-2 bg-white mt-2 rounded-lg">
+            <div class="text-sm text-gray-800 px-2 font-semibold">
+              Last Name
+            </div>
+            <div class="px-2 py-1">{{userobj.last_name}}</div>
+          </div>
+
+          <div class="flex flex-col px-2 py-2 bg-white mt-2 rounded-lg">
+            <div class="text-sm text-gray-800 px-2 font-semibold">Email</div>
+            <div class="px-2 py-1">{{userobj.email}}</div>
+          </div>
+
+          <div class="flex flex-col px-2 py-2 bg-white mt-2 rounded-lg">
+            <div class="text-sm text-gray-800 px-2 font-semibold">Phone</div>
+            <div class="px-2 py-1">{{userobj.phone}}</div>
+          </div>
+        </div>
+        <h1 class="mt-4 mb-2 text-lg font-bold">Facilities</h1>
+        <div class="flex flex-col px-2 py-2 bg-white mt-2 rounded-lg">
+          <div class="text-sm text-gray-800 px-2 font-semibold">
+            Assigned Facility
+          </div>
+          <div class="px-2 py-1">{{userobj.facility}}</div>
+        </div>
+
+        <h1 class="mt-4 text-lg font-bold">Role</h1>
+        <div class="flex flex-col px-2 py-2 bg-white mt-2 rounded-lg">
+          <div class="px-2 py-1">{{userobj.role}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  ​ {% endblock %}
+</div>

@@ -1,0 +1,66 @@
+{% extends "base.html" %} {% block content %}
+<div class="flex mb-0">
+  {% include 'dashboard_layout.html' with username=myuser.username %}
+  <div
+    class="flex basis-3/4 bg-gray-200 h-screen mb-0 overflow-auto justify-center"
+  >
+    <div class="flex justify-center">
+      <div class="flex flex-col px-8 py-8">
+        <div class="flex justify-between">
+          <h1 class="text-3xl mb-8 font-bold mr-8">{{facility.name}}</h1>
+          <button
+            class="border-2 border-black mr-4 px-4 h-10 w-20 rounded-lg hover:bg-black hover:text-white"
+          >
+            <a href="/delete-facility/1/">Delete</a>
+          </button>
+          <button
+            class="border-2 border-black bg-black px-4 h-10 w-20 rounded-lg hover:bg-white hover:text-black text-white"
+          >
+            <a href="/update-facility/1/">Edit</a>
+          </button>
+        </div>
+        {% if facility.kind is 1 %}
+        <h1 class="mt-6 mb-4 text-lg font-bold">PHC</h1>
+        {% else %}
+        <h1 class="mt-6 mb-4 text-lg font-bold">PHC</h1>
+        {% endif %}
+        <div class="grid grid-cols-2 grid-flow-row-dense gap-4 mt-2">
+          <div
+            class="flex flex-col px-2 py-2 bg-white col-span-2 my-2 rounded-lg"
+          >
+            <div class="text-sm text-gray-800 px-2 font-semibold">Name</div>
+            <div class="px-2 py-1">{{facility.name}}</div>
+          </div>
+
+          <div
+            class="flex flex-col px-2 py-2 bg-white my-2 col-span-2 rounded-lg"
+          >
+            <div class="text-sm text-gray-800 px-2 font-semibold">Address</div>
+            <div class="px-2 py-1">{{facility.address}}</div>
+          </div>
+
+          <div
+            class="flex flex-col px-2 py-2 bg-white my-2 col-span-2 rounded-lg"
+          >
+            <div class="text-sm text-gray-800 px-2 font-semibold">Ward</div>
+            <div class="px-2 py-1">{{facility.ward}}</div>
+          </div>
+
+          <div class="flex flex-col px-2 py-2 bg-white my-2 rounded-lg">
+            <div class="text-sm text-gray-800 px-2 font-semibold">Pincode</div>
+            <div class="px-2 py-1">{{facility.pincode}}</div>
+          </div>
+
+          <div class="flex flex-col px-2 py-2 bg-white my-2 rounded-lg">
+            <div class="text-sm text-gray-800 px-2 font-semibold">
+              Phone number
+            </div>
+            <div class="px-2 py-1">{{facility.phone}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  ​ {% endblock %}
+</div>

@@ -1,0 +1,115 @@
+{% extends "base.html" %} {% block content %}
+<div class="flex mb-0">
+  {% include 'dashboard_layout.html' with username=myuser.username %}
+  <div class="flex basis-3/4 bg-gray-200 h-screen mb-0 overflow-auto">
+    <div class="flex flex-col w-full">
+      <div class="flex flex-col basis-1/5 w-full justify-center">
+        <div class="flex mx-10 mt-8 justify-between">
+          <h1 class="text-3xl font-bold">Patients</h1>
+          <button
+            class="bg-blue-600 text-white px-3 py-1 rounded-lg font-semibold"
+          >
+            <a href="/create-patient/">New</a>
+          </button>
+        </div>
+        <div class="flex mx-10 my-12 justify-between">
+          <form class="" method="get">
+            <div class="flex justify-start">
+              <input
+                type="text"
+                name="search"
+                placeholder="search"
+                class="bg-white rounded-lg px-2 py-2"
+              />
+              <button class="bg-white rounded ml-2 px-1 py-1">
+                <div class="flex flex-col justify-center">
+                  <img
+                    class="h-6 w-6 rounded-full align-middle"
+                    src="https://cdn-icons-png.flaticon.com/512/149/149852.png"
+                    alt="searchicon"
+                  />
+                </div>
+              </button>
+            </div>
+          </form>
+          <div class="flex justify-center">
+            <div
+              class="flex justify-between rounded-lg text-gray-400 bg-white text-sm py-2 px-4 mx-2 h-10"
+            >
+              Filters
+              <img
+                src="https://cdn-icons.flaticon.com/png/512/2985/premium/2985150.png?token=exp=1645957558~hmac=27bb911f80a375b4dc065f106dcdf1bc"
+                class="h-5 w-5 color-grey"
+              />
+            </div>
+            <div
+              class="flex justify-between rounded-lg text-gray-400 bg-white text-sm py-2 px-4 h-10 mx-2"
+            >
+              Sort
+              <img
+                src="https://cdn-icons.flaticon.com/png/512/2985/premium/2985150.png?token=exp=1645957558~hmac=27bb911f80a375b4dc065f106dcdf1bc"
+                class="h-5 w-5 color-grey"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col basis-4/5">
+        <div class="grid grid-cols-3 gap-4 mt-2 mx-10">
+          {% for pat in patients_data %}
+          <div class="bg-white w-full px-5 py-3 rounded-lg hover:bg-blue-200">
+            <div class="flex flex-col">
+              <h3 class="mx-0 text-black font-semibold">
+                <a href="/patient-details/{{pat.id}}/"
+                  >{{pat.first_name}} {{pat.last_name}}</a
+                >
+              </h3>
+              <p class="text-sm text-gray-700">{{pat.address}}</p>
+              <h4 class="text-sm mt-2">Birthdate: {{pat.date_of_birth}}</h4>
+              <h4 class="text-sm text-blue-500">{{pat.phone}}</h4>
+            </div>
+          </div>
+          {% endfor %}
+
+          <div class="bg-white w-full px-5 py-3 rounded-lg hover:bg-blue-200">
+            <div class="flex flex-col">
+              <h3 class="mx-0 text-black font-semibold">
+                <a href="">Sam Dow</a>
+              </h3>
+              <p class="text-sm text-gray-700">
+                South Apt, East Block, West city North 18090
+              </p>
+              <h4 class="text-sm mt-2">30 years Old</h4>
+              <h4 class="text-sm text-blue-500">+91 8935477234</h4>
+            </div>
+          </div>
+          <div class="bg-white w-full px-5 py-3 rounded-lg hover:bg-blue-200">
+            <div class="flex flex-col">
+              <h3 class="mx-0 text-black font-semibold">
+                <a href="">Sam Dow</a>
+              </h3>
+              <p class="text-sm text-gray-700">
+                South Apt, East Block, West city North 18090
+              </p>
+              <h4 class="text-sm mt-2">30 years Old</h4>
+              <h4 class="text-sm text-blue-500">+91 8935477234</h4>
+            </div>
+          </div>
+          <div class="bg-white w-full px-5 py-3 rounded-lg hover:bg-blue-200">
+            <div class="flex flex-col">
+              <h3 class="mx-0 text-black font-semibold">
+                <a href="">Sam Dow</a>
+              </h3>
+              <p class="text-sm text-gray-700">
+                South Apt, East Block, West city North 18090
+              </p>
+              <h4 class="text-sm mt-2">30 years Old</h4>
+              <h4 class="text-sm text-blue-500">+91 8935477234</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+​ {% endblock %}

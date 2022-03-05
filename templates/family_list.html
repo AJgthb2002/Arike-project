@@ -1,0 +1,76 @@
+{% extends "base.html" %} {% block content %}
+<div class="flex mb-0">
+  {% include 'dashboard_layout.html' with username=myuser.username %}
+  <div class="flex basis-3/4 bg-gray-200 h-screen mb-0 overflow-auto">
+    <div class="flex flex-col w-full">
+      <div class="flex flex-col basis-1/5 w-full justify-center">
+        <div class="flex mx-10 mt-8 justify-between">
+          <h1 class="text-3xl font-bold">Family Details</h1>
+          <button
+            class="bg-blue-600 text-white px-4 py-1 rounded-lg font-semibold"
+          >
+            <a href="/patient-details/{{patientobj.id}}/create-family/">Add</a>
+          </button>
+        </div>
+        <div class="flex flex-col mx-10 mt-12 mb-6">
+          <h1 class="text-lg font-bold">
+            {{patientobj.first_name}} {{patientobj.last_name}}
+          </h1>
+          {{patientobj.address}}
+        </div>
+      </div>
+      <div class="flex flex-col basis-4/5">
+        <div class="grid grid-cols-2 gap-4 mt-2 mx-10">
+          {% for familyobj in family_data %}
+          <div class="flex flex-col bg-white rounded-lg px-8 py-4 pr-12">
+            <div class="flex justify-between">
+              <h3 class="mx-0 text-black font-semibold text-lg">
+                {{familyobj.first_name}} {{familyobj.last_name}}
+              </h3>
+              <span class="text-sm text-gray-700 font-bold"
+                >{{familyobj.relation}}</span
+              >
+            </div>
+            <span class="text-sm text-gray-700">{{familyobj.address}}</span>
+            <div class="flex mt-4 justify-between">
+              <div class="flex flex-col">
+                <h2 class="font-semibold text-sm">Phone Number</h2>
+                <h4 class="text-sm text-blue-500">{{familyobj.phone}}</h4>
+
+                <h2 class="mt-4 font-semibold text-sm">Birthdate</h2>
+                <h4 class="text-sm">{{familyobj.date_of_birth}}</h4>
+
+                <h2 class="mt-4 font-semibold text-sm">Education</h2>
+                <h4 class="text-sm">{{familyobj.education}}</h4>
+              </div>
+              <div class="flex flex-col">
+                <h2 class="font-semibold text-sm">Email</h2>
+                <h4 class="text-sm text-blue-500">{{familyobj.email}}</h4>
+
+                <h2 class="mt-4 font-semibold text-sm">Occupation</h2>
+                <h4 class="text-sm">{{familyobj.occupation}}</h4>
+
+                <h2 class="mt-4 font-semibold text-sm">Remarks</h2>
+                <h4 class="text-sm">{{familyobj.remarks}}</h4>
+              </div>
+            </div>
+            <div class="flex mt-4">
+              <button
+                class="bg-blue-600 text-white px-4 py-1 rounded-lg font-semibold"
+              >
+                <a href="delete-family/{{familyobj.id}}/">Delete</a>
+              </button>
+              <button
+                class="bg-blue-600 text-white px-4 py-1 mx-8 rounded-lg font-semibold"
+              >
+                <a href="update-family/{{familyobj.id}}/">Edit</a>
+              </button>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+​ {% endblock %}

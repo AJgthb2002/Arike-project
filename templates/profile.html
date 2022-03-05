@@ -1,0 +1,119 @@
+{% extends "base.html" %} {% block content %}
+<div class="flex mb-0">
+  {% include 'dashboard_layout.html' with username=myuser.username %}
+  <div class="flex basis-3/4 bg-gray-200 h-screen mb-0 overflow-auto">
+    <div class="flex flex-col w-full">
+      <div class="flex flex-col basis-1/4 w-full justify-center">
+        <div class="flex mx-10 my-10 justify-center">
+          <div class="flex flex-col justify-center">
+            <div class="flex justify-center">
+              <div
+                class="flex rounded-full bg-blue-200 h-20 w-20 font-extrabold text-3xl justify-center"
+              >
+                <span class="flex flex-col justify-center"
+                  >{{myuser.first_name | upper | slice:"0:1"}}</span
+                >
+              </div>
+            </div>
+            <div class="flex justify-center">
+              <h1 class="font-bold text-lg text-black mt-2">
+                {{myuser.first_name}} {{myuser.last_name}}
+              </h1>
+            </div>
+            <div
+              class="flex rounded-lg bg-blue-900 font-semibold text-sm text-white px-2 py-1"
+            >
+              {{myuser.role}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col basis-3/4 px-32 justify-start pb-12">
+        <hr class="bg-gray-400 w-full mb-5" />
+        <div class="font-bold text-2xl mb-5">Profile</div>
+        <form class="" method="post">
+          {% csrf_token %}
+          <div class="flex justify-around">
+            <div class="bg-white flex flex-col rounded-lg px-5 py-2 mx-8 w-60">
+              <span class="text-gray-600 text-sm">First Name</span>
+              <input
+                placeholder=""
+                value="{{myuser.first_name}}"
+                type="text"
+                name="first_name"
+              />
+            </div>
+
+            <div class="bg-white flex flex-col rounded-lg px-5 py-2 mx-8 w-60">
+              <span class="text-gray-600 text-sm">Last Name</span>
+              <input
+                placeholder=""
+                value="{{myuser.last_name}}"
+                type="text"
+                name="last_name"
+              />
+            </div>
+          </div>
+
+          <div class="flex justify-around mt-4">
+            <div class="bg-white flex flex-col rounded-lg px-5 py-2 mx-8 w-60">
+              <span class="text-gray-600 text-sm">Email</span>
+              <input
+                placeholder=""
+                value="{{myuser.email}}"
+                type="email"
+                name="email"
+              />
+            </div>
+
+            <div class="bg-white flex flex-col rounded-lg px-5 py-2 mx-8 w-60">
+              <span class="text-gray-600 text-sm">Phone</span>
+              <input
+                placeholder=""
+                value="{{myuser.phone}}"
+                type="tel"
+                name="phone"
+              />
+            </div>
+          </div>
+
+          <div class="font-bold text-2xl mt-10 mb-5">Password</div>
+          <div class="flex justify-start">
+            <div
+              class="bg-white flex flex-col rounded-lg px-5 py-2 mx-8 w-60 ml-12"
+            >
+              <span class="text-gray-600 text-sm">Previous Password</span>
+              <input
+                placeholder=""
+                value="{{myuser.password}}"
+                type="password"
+              />
+            </div>
+          </div>
+
+          <div class="flex justify-around mt-4">
+            <div class="bg-white flex flex-col rounded-lg px-5 py-2 mx-8 w-60">
+              <span class="text-gray-600 text-sm">New Password</span>
+              <input type="password" name="password1" />
+            </div>
+
+            <div class="bg-white flex flex-col rounded-lg px-5 py-2 mx-8 w-60">
+              <span class="text-gray-600 text-sm">Confirm Password</span>
+              <input type="password" name="password2" />
+            </div>
+          </div>
+
+          <div class="flex justify-center">
+            <button
+              class="bg-blue-600 text-white font-semibold w-60 px-5 py-2 rounded-lg mt-8"
+              type="submit"
+            >
+              Update
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+​ {% endblock %}

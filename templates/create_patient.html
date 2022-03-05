@@ -1,0 +1,34 @@
+{% extends "base.html" %} {% block content %}
+<div class="flex mb-0">
+  {% include 'dashboard_layout.html' with username=myuser.username %}
+  <div
+    class="flex basis-3/4 bg-gray-200 h-screen mb-0 overflow-auto justify-center"
+  >
+    <div class="flex">
+      <div class="flex flex-col px-8 py-8">
+        <h1 class="text-3xl mb-8 font-bold">Patient Registration</h1>
+
+        <div class="grid grid-cols-2 grid-flow-row-dense gap-4 mt-2">
+          <form action="" method="post">
+            {% csrf_token %}{% for field in form %}
+            <div class="bg-white my-2 rounded-lg w-full">
+              <div class="flex flex-col px-2 py-2">
+                <div class="text-sm text-gray-600">{{field.label}}</div>
+                <div class="px-2 py-1">{{field}}</div>
+              </div>
+            </div>
+            {% endfor %}
+         
+        </div>
+        <button
+          class="bg-blue-600 hover:bg-blue-300 text-white my-2 py-2 px-10 border border-blue-700 rounded-lg shadow"
+          type="submit"
+        >
+          Add
+        </button>
+    </form>
+      </div>
+    </div>
+  </div>
+  ​ {% endblock %}
+</div>

@@ -1,0 +1,1 @@
+web: gunicorn arike_project.wsgi --log-file -
