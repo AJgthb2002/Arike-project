@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block content %}
+<div class="flex mb-0">
+  {% include 'dashboard_layout.html' with username=myuser.username %}
+  <div
+    class="flex basis-3/4 bg-gray-200 h-screen mb-0 overflow-auto justify-center"
+  >
+    <div class="flex justify-center mx-10 my-10">
+      <div class="flex-col justify-center items-center">
+        <h2 class="text-2xl font-semibold mb-5">Update User</h2>
+        <form action="" method="post">
+          {% csrf_token %}
+          <div class="grid grid-cols-2 gap-4">
+            {% for field in form %}
+            <div class="bg-white my-2 rounded-lg w-full">
+              <div class="flex flex-col px-2 py-2">
+                <div class="text-sm text-gray-600">{{field.label}}</div>
+                <div class="px-2 py-1">{{field}}</div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          <button
+            class="bg-blue-600 hover:bg-blue-300 text-white my-2 mt-5 py-2 px-10 w-full border border-blue-700 rounded shadow"
+            type="submit"
+          >
+            Update
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+​ {% endblock %}

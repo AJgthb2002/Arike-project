@@ -32,26 +32,26 @@
               </button>
             </div>
           </form>
-          <div class="flex justify-center">
-            <div
-              class="flex justify-between rounded-lg text-gray-400 bg-white text-sm py-2 px-4 mx-2 h-10"
-            >
-              Filters
-              <img
-                src="https://cdn-icons.flaticon.com/png/512/2985/premium/2985150.png?token=exp=1645957558~hmac=27bb911f80a375b4dc065f106dcdf1bc"
-                class="h-5 w-5 color-grey"
-              />
+          <form method="get">
+            <div class="flex justify-center">
+              <div class="mr-2">
+                <select
+                  name="sort"
+                  id="sort"
+                  class="rounded-lg px-4 py-1 h-10 w-24"
+                >
+                  <option value="default">Sort</option>
+                  <option value="AZ">A->Z</option>
+                  <option value="ZA">Z->A</option>
+                </select>
+              </div>
+              <button
+                class="flex justify-between rounded-lg text-white bg-blue-600 text-sm py-2 px-4 mx-2 h-10"
+              >
+                Apply
+              </button>
             </div>
-            <div
-              class="flex justify-between rounded-lg text-gray-400 bg-white text-sm py-2 px-4 mx-2 h-10"
-            >
-              Sort
-              <img
-                src="https://cdn-icons.flaticon.com/png/512/2985/premium/2985150.png?token=exp=1645957558~hmac=27bb911f80a375b4dc065f106dcdf1bc"
-                class="h-5 w-5 color-grey"
-              />
-            </div>
-          </div>
+          </form>
         </div>
       </div>
       <div class="flex flex-col basis-4/5">

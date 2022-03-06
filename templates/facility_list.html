@@ -32,26 +32,27 @@
               </button>
             </div>
           </form>
-          <div class="flex justify-center">
-            <div
-              class="flex justify-between rounded-lg text-gray-400 bg-white text-sm py-2 px-4 mx-2 h-10"
-            >
-              Filters
-              <img
-                src="https://cdn-icons.flaticon.com/png/512/2985/premium/2985150.png?token=exp=1645957558~hmac=27bb911f80a375b4dc065f106dcdf1bc"
-                class="h-5 w-5 color-grey"
-              />
+
+          <form method="get">
+            <div class="flex justify-center">
+              <div class="mr-2">
+                <select
+                  name="sort"
+                  id="sort"
+                  class="rounded-lg px-4 py-1 h-10 w-24"
+                >
+                  <option value="default">Sort</option>
+                  <option value="AZ">A->Z</option>
+                  <option value="ZA">Z->A</option>
+                </select>
+              </div>
+              <button
+                class="flex justify-between rounded-lg text-white bg-blue-600 text-sm py-2 px-4 mx-2 h-10"
+              >
+                Apply
+              </button>
             </div>
-            <div
-              class="flex justify-between rounded-lg text-gray-400 bg-white text-sm py-2 px-4 mx-2 h-10"
-            >
-              Sort
-              <img
-                src="https://cdn-icons.flaticon.com/png/512/2985/premium/2985150.png?token=exp=1645957558~hmac=27bb911f80a375b4dc065f106dcdf1bc"
-                class="h-5 w-5 color-grey"
-              />
-            </div>
-          </div>
+          </form>
         </div>
       </div>
       <div class="flex flex-col basis-4/5 pb-8">
@@ -116,61 +117,6 @@
             </div>
           </div>
           {% endfor %}
-
-          <div class="bg-white w-full px-5 py-3 rounded-lg">
-            <div class="flex flex-col">
-              <div class="flex justify-between">
-                <h3 class="mx-0 text-black font-semibold">Govt Hospital</h3>
-                <div
-                  class="flex rounded-lg bg-blue-900 font-semibold text-xs text-white px-4 py-1"
-                >
-                  PHC
-                </div>
-              </div>
-              <p class="text-sm text-gray-700 mt-2">
-                Aikaranad Grama Panchayat, Ernakulam District
-              </p>
-              <h4 class="text-sm my-2 text-gray-900 font-semibold">
-                PAZAMTHOTTAM
-              </h4>
-              <hr class="mb-4" />
-              <div class="flex justify-between">
-                <h4 class="text-md">+91 8935477234</h4>
-                <button
-                  class="border-2 border-black w-16 px-2 py-1 rounded-lg hover:bg-black hover:text-white"
-                >
-                  View
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="bg-white w-full px-5 py-3 rounded-lg">
-            <div class="flex flex-col">
-              <div class="flex justify-between">
-                <h3 class="mx-0 text-black font-semibold">Govt Hospital</h3>
-                <div
-                  class="flex rounded-lg bg-blue-900 font-semibold text-xs text-white px-4 py-1"
-                >
-                  PHC
-                </div>
-              </div>
-              <p class="text-sm text-gray-700 mt-2">
-                Aikaranad Grama Panchayat, Ernakulam District
-              </p>
-              <h4 class="text-sm my-2 text-gray-900 font-semibold">
-                PAZAMTHOTTAM
-              </h4>
-              <hr class="mb-4" />
-              <div class="flex justify-between">
-                <h4 class="text-md">+91 8935477234</h4>
-                <button
-                  class="border-2 border-black w-16 px-2 py-1 rounded-lg hover:bg-black hover:text-white"
-                >
-                  View
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

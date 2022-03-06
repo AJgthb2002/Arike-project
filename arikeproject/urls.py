@@ -9,7 +9,6 @@ from django.contrib.auth.views import LogoutView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', UserLoginView.as_view()),
-    # path('dashboard/', view_dashboard),
     path('home/', GenericHomeView.as_view()),
     path('users/', GenericUsersView.as_view()),
     path('profile/', GenericProfileView.as_view()),
@@ -30,6 +29,6 @@ urlpatterns = [
     path('delete-user/<pk>/', GenericUserDeleteView.as_view()),
     path('update-patient/<pk>/',GenericPatientUpdateView.as_view()),
     path('update-facility/<pk>/',GenericFacilityUpdateView.as_view()),
+    path('update-user/<pk>/',GenericUserUpdateView.as_view()),
     path('logout/', LogoutView.as_view()),
-    # path('signup/', UserCreateView.as_view()),
 ]

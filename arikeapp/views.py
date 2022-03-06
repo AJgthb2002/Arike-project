@@ -32,9 +32,14 @@ class GenericPatientsView(LoginRequiredMixin,View):
         patients_data= Patient.objects.filter(deleted=False)
         print(len(patients_data))
         search_term=request.GET.get('search')
+        sort_by = request.GET.get('sort')
         if search_term:
             patients_data= patients_data.filter(first_name__icontains=search_term) | patients_data.filter(last_name__icontains=search_term)
-            
+        if sort_by == "AZ":
+            patients_data= patients_data.order_by('first_name')  
+        if sort_by == "ZA":
+            patients_data= patients_data.order_by('-first_name')  
+
         return render(request, self.template, {"myuser": current_user,"patients_data":patients_data})
 
 class GenericPatientDetailView(LoginRequiredMixin,View):
@@ -189,10 +194,15 @@ class GenericFacilitiesView(LoginRequiredMixin, View):
         print(len(facility_data))
         wards_data=Ward.objects.filter(deleted=False)
         search_term=request.GET.get('search')
+        sort_by=request.GET.get('sort')
         filter_ward_term=request.GET.get('filter-ward')
         filter_kind_term=request.GET.get('filter-kind')
         if search_term:
             facility_data= facility_data.filter(name__icontains=search_term) | facility_data.filter(address__icontains=search_term) 
+        if sort_by == "AZ":
+            facility_data= facility_data.order_by('name')
+        if sort_by == "ZA":
+            facility_data= facility_data.order_by('-name')
         if filter_ward_term not in [ None,"default"]:
             facility_data= facility_data.filter(ward__name=filter_ward_term) 
         if filter_kind_term not in [ None,"default"]:
@@ -393,18 +403,18 @@ class GenericHomeView(LoginRequiredMixin,View):
 # def view_dashboard(request):
 #     return render(request,"dashboard_layout.html")
 
-@login_required
-def view_home(request):
-    return render(request,"home2.html",{"myusername":"Alex Doe"})
+# @login_required
+# def view_home(request):
+#     return render(request,"home2.html",{"myusername":"Alex Doe"})
 
-def view_users(request):
-    return render(request,"user_list.html",{"myusername":"Alex Doe"})    
+# def view_users(request):
+#     return render(request,"user_list.html",{"myusername":"Alex Doe"})    
 
-def view_profile(request):
-    return render(request,"profile.html",{"myusername":"Alex Doe"})   
+# def view_profile(request):
+#     return render(request,"profile.html",{"myusername":"Alex Doe"})   
 
-def create_user_view(request):
-    return render(request,"create_user.html",{"myusername":"Alex Doe"})        
+# def create_user_view(request):
+#     return render(request,"create_user.html",{"myusername":"Alex Doe"})        
 
 # User ------------------------------------------------------------------------
 class UserSignUpForm(UserCreationForm):
@@ -438,6 +448,14 @@ class GenericUsersView(LoginRequiredMixin, View):
         users_data=Myuser.objects.filter(deleted=False)
         superusers = Myuser.objects.filter(is_superuser=True)
         search_term=request.GET.get('search')
+        sort_by = request.GET.get('sort')
+        
+        if sort_by == "AZ":
+            users_data= users_data.order_by('first_name')  
+            superusers= superusers.order_by('first_name')  
+        if sort_by == "ZA":
+            users_data= users_data.order_by('-first_name')
+            superusers= superusers.order_by('-first_name')  
         if search_term:
             users_data= users_data.filter(first_name__icontains=search_term) | users_data.filter(last_name__icontains=search_term)
             superusers = superusers.filter(first_name__icontains=search_term)| superusers.filter(last_name__icontains=search_term) 
@@ -453,10 +471,10 @@ class GenericUserDetailView(LoginRequiredMixin,View):
         user_obj = Myuser.objects.get(id=pk)
         return render(request, self.template, {"myuser": current_user,"userobj":user_obj}) 
 
-class GenericUserDeleteView(AuthorisedPatientsGenerator, DeleteView):
+class GenericUserDeleteView(LoginRequiredMixin, DeleteView):
     model=Myuser
     template_name="delete_user.html"
-    success_url="users/"
+    success_url="/users/"
 
     def get_object(self, queryset=None):
         return get_object_or_404(Myuser, pk=self.kwargs.get('pk'))
@@ -465,3 +483,22 @@ class GenericUserDeleteView(AuthorisedPatientsGenerator, DeleteView):
         context = super().get_context_data(**kwargs)
         context['myuser'] = self.request.user
         return context        
+
+class GenericUserUpdateView(LoginRequiredMixin, UpdateView):  
+    model=Myuser
+    form_class=UserSignUpForm
+    template_name="update_user.html"
+    success_url="/users/"
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Myuser, pk=self.kwargs.get('pk'))
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['myuser'] = self.request.user
+        return context
+
+    def form_valid(self, form):
+        self.object = form.save()
+        self.object.save()
+        return HttpResponseRedirect("/users/")        
