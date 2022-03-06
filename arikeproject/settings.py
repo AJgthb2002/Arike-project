@@ -117,8 +117,15 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL="/"
-LOGIN_REDIRECT_URL = "home/"
+LOGIN_REDIRECT_URL = "/home/"
 LOGOUT_REDIRECT_URL="/"
+
+
+BROKER_URL = "redis://localhost:6379"
+CELERY_RESULT_BACKEND = "redis://localhost:6379"
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
 
 import dj_database_url 
 prod_db  =  dj_database_url.config(conn_max_age=500)
