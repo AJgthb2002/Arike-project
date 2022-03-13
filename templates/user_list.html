@@ -6,11 +6,13 @@
       <div class="flex flex-col basis-1/5 w-full justify-center">
         <div class="flex mx-10 mt-5 justify-between">
           <h1 class="text-3xl font-bold">Users</h1>
+          {% if myuser.role == 'District Admin' %}
           <button
             class="bg-blue-600 text-white px-3 py-1 rounded-lg font-semibold"
           >
             <a href="/create-user/">New</a>
           </button>
+          {% endif %}
         </div>
         <div class="flex mx-10 my-5 justify-between">
           <form class="" method="get">

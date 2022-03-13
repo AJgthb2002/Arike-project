@@ -10,6 +10,7 @@
           <h1 class="text-3xl mb-8 font-bold mr-8">
             {{userobj.first_name}} {{userobj.last_name}}
           </h1>
+          {% if myuser.role == 'District Admin' %}
           <div class="flex">
             <button
               class="border-2 border-black px-4 h-10 mr-4 w-20 rounded-lg hover:bg-black hover:text-white"
@@ -22,6 +23,7 @@
               <a href="/update-user/{{userobj.id}}/">Edit</a>
             </button>
           </div>
+          {% endif %}
         </div>
 
         <h1 class="mt-6 mb-2 text-lg font-bold">Profile</h1>

@@ -191,7 +191,6 @@ class GenericFacilitiesView(LoginRequiredMixin, View):
     def get(self, request):
         current_user = request.user
         facility_data=Facility.objects.filter(deleted=False)
-        print(len(facility_data))
         wards_data=Ward.objects.filter(deleted=False)
         search_term=request.GET.get('search')
         sort_by=request.GET.get('sort')
